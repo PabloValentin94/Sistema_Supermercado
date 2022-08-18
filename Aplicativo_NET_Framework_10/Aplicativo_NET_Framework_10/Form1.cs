@@ -16,14 +16,14 @@ namespace Aplicativo_NET_Framework_10
 
         int id = 1;
 
+        double total = 0;
+
         public frm_mercadinho()
         {
 
             InitializeComponent();
 
             txt_id_venda.Text = id.ToString();
-
-            lbl_itens_sistema_resultado.Text = dgv_carrinho_de_compras.RowCount.ToString();
 
             btn_remover.Enabled = false;
 
@@ -47,6 +47,10 @@ namespace Aplicativo_NET_Framework_10
             {
 
                 double valor_unitario = double.Parse(txt_valor_unitario.Text);
+
+                total += valor_unitario * int.Parse(txt_quantidade.Text);
+
+                lbl_total_resultado.Text = total.ToString("F2");
 
                 dgv_carrinho_de_compras.Rows.Add(id.ToString(""), txt_descricao.Text, txt_quantidade.Text, valor_unitario.ToString("F2"));
 
@@ -72,10 +76,6 @@ namespace Aplicativo_NET_Framework_10
             if(dgv_carrinho_de_compras.RowCount > 0)
             {
 
-                dgv_carrinho_de_compras.Rows.RemoveAt(dgv_carrinho_de_compras.CurrentCell.RowIndex);
-
-                MessageBox.Show("Venda excluída com sucesso.", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                 btn_remover.Enabled = false;
 
                 txt_qnt_item_selecionado.Clear();
@@ -84,7 +84,19 @@ namespace Aplicativo_NET_Framework_10
 
                 btn_alterar.Enabled = false;
 
+                double valor_exluido = 
+                    int.Parse(dgv_carrinho_de_compras.CurrentRow.Cells["coluna_quantidade"].Value.ToString()) * 
+                    double.Parse(dgv_carrinho_de_compras.CurrentRow.Cells["coluna_valor_unitario"].Value.ToString());
+
+                total -= valor_exluido;
+
+                lbl_total_resultado.Text = total.ToString("F2");
+
+                dgv_carrinho_de_compras.Rows.RemoveAt(dgv_carrinho_de_compras.CurrentCell.RowIndex);
+
                 lbl_itens_sistema_resultado.Text = dgv_carrinho_de_compras.RowCount.ToString();
+
+                MessageBox.Show("Venda excluída com sucesso.", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
 
@@ -96,6 +108,8 @@ namespace Aplicativo_NET_Framework_10
             {
 
                 dgv_carrinho_de_compras.CurrentRow.Cells["coluna_quantidade"].Value = txt_qnt_item_selecionado.Text;
+
+                MessageBox.Show("Venda alterada com sucesso.", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 txt_qnt_item_selecionado.Clear();
 
@@ -171,6 +185,8 @@ namespace Aplicativo_NET_Framework_10
         {
 
             id = 1;
+
+            total = 0;
 
             Application.Exit();
 

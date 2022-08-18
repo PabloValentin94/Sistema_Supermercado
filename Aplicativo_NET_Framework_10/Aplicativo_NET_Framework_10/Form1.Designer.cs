@@ -277,29 +277,29 @@
             this.lbl_itens_sistema_resultado.AutoSize = true;
             this.lbl_itens_sistema_resultado.BackColor = System.Drawing.Color.Transparent;
             this.lbl_itens_sistema_resultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_itens_sistema_resultado.Location = new System.Drawing.Point(348, 118);
+            this.lbl_itens_sistema_resultado.Location = new System.Drawing.Point(355, 118);
             this.lbl_itens_sistema_resultado.Name = "lbl_itens_sistema_resultado";
             this.lbl_itens_sistema_resultado.Size = new System.Drawing.Size(17, 18);
             this.lbl_itens_sistema_resultado.TabIndex = 19;
-            this.lbl_itens_sistema_resultado.Text = "g";
+            this.lbl_itens_sistema_resultado.Text = "0";
             // 
             // lbl_total_resultado
             // 
             this.lbl_total_resultado.AutoSize = true;
             this.lbl_total_resultado.BackColor = System.Drawing.Color.Transparent;
             this.lbl_total_resultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total_resultado.Location = new System.Drawing.Point(328, 80);
+            this.lbl_total_resultado.Location = new System.Drawing.Point(306, 80);
             this.lbl_total_resultado.Name = "lbl_total_resultado";
-            this.lbl_total_resultado.Size = new System.Drawing.Size(17, 18);
+            this.lbl_total_resultado.Size = new System.Drawing.Size(39, 18);
             this.lbl_total_resultado.TabIndex = 18;
-            this.lbl_total_resultado.Text = "g";
+            this.lbl_total_resultado.Text = "0,00";
             // 
             // lbl_itens_sistema
             // 
             this.lbl_itens_sistema.AutoSize = true;
             this.lbl_itens_sistema.BackColor = System.Drawing.Color.Transparent;
             this.lbl_itens_sistema.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_itens_sistema.Location = new System.Drawing.Point(215, 118);
+            this.lbl_itens_sistema.Location = new System.Drawing.Point(222, 118);
             this.lbl_itens_sistema.Name = "lbl_itens_sistema";
             this.lbl_itens_sistema.Size = new System.Drawing.Size(127, 18);
             this.lbl_itens_sistema.TabIndex = 16;
@@ -310,7 +310,7 @@
             this.lbl_total.AutoSize = true;
             this.lbl_total.BackColor = System.Drawing.Color.Transparent;
             this.lbl_total.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.Location = new System.Drawing.Point(275, 80);
+            this.lbl_total.Location = new System.Drawing.Point(253, 80);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(44, 18);
             this.lbl_total.TabIndex = 14;
