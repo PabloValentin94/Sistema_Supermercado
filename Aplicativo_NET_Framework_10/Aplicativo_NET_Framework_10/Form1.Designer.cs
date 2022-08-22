@@ -374,7 +374,6 @@
             this.coluna_id.HeaderText = "ID";
             this.coluna_id.Name = "coluna_id";
             this.coluna_id.ReadOnly = true;
-            this.coluna_id.Visible = false;
             this.coluna_id.Width = 48;
             // 
             // coluna_descricao
