@@ -33,20 +33,16 @@
             this.lbl_descricao = new System.Windows.Forms.Label();
             this.lbl_quantidade = new System.Windows.Forms.Label();
             this.txt_id_venda = new System.Windows.Forms.TextBox();
-            this.txt_quantidade = new System.Windows.Forms.TextBox();
             this.txt_valor_unitario = new System.Windows.Forms.TextBox();
             this.txt_descricao = new System.Windows.Forms.TextBox();
             this.btn_inserir = new System.Windows.Forms.Button();
             this.btn_remover = new System.Windows.Forms.Button();
             this.dgv_carrinho_de_compras = new System.Windows.Forms.DataGridView();
-            this.coluna_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coluna_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coluna_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coluna_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grp_informacoes_venda = new System.Windows.Forms.GroupBox();
+            this.nup_quantidade = new System.Windows.Forms.NumericUpDown();
             this.lbl_qnt_item_selecionado = new System.Windows.Forms.Label();
-            this.txt_qnt_item_selecionado = new System.Windows.Forms.TextBox();
             this.grp_sistema = new System.Windows.Forms.GroupBox();
+            this.nup_qnt_item_selecionado = new System.Windows.Forms.NumericUpDown();
             this.lbl_itens_sistema_resultado = new System.Windows.Forms.Label();
             this.lbl_total_resultado = new System.Windows.Forms.Label();
             this.lbl_itens_sistema = new System.Windows.Forms.Label();
@@ -55,9 +51,15 @@
             this.btn_alterar = new System.Windows.Forms.Button();
             this.btn_nova_venda = new System.Windows.Forms.Button();
             this.btn_cancelar_venda = new System.Windows.Forms.Button();
+            this.coluna_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coluna_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coluna_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coluna_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_carrinho_de_compras)).BeginInit();
             this.grp_informacoes_venda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_quantidade)).BeginInit();
             this.grp_sistema.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_qnt_item_selecionado)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_id_venda
@@ -113,14 +115,6 @@
             this.txt_id_venda.Size = new System.Drawing.Size(105, 26);
             this.txt_id_venda.TabIndex = 4;
             // 
-            // txt_quantidade
-            // 
-            this.txt_quantidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_quantidade.Location = new System.Drawing.Point(298, 43);
-            this.txt_quantidade.Name = "txt_quantidade";
-            this.txt_quantidade.Size = new System.Drawing.Size(105, 26);
-            this.txt_quantidade.TabIndex = 5;
-            // 
             // txt_valor_unitario
             // 
             this.txt_valor_unitario.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,6 +122,7 @@
             this.txt_valor_unitario.Name = "txt_valor_unitario";
             this.txt_valor_unitario.Size = new System.Drawing.Size(105, 26);
             this.txt_valor_unitario.TabIndex = 6;
+            this.txt_valor_unitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_valor_unitario_KeyPress);
             // 
             // txt_descricao
             // 
@@ -186,38 +181,11 @@
             this.dgv_carrinho_de_compras.TabIndex = 10;
             this.dgv_carrinho_de_compras.DoubleClick += new System.EventHandler(this.dgv_carrinho_de_compras_DoubleClick);
             // 
-            // coluna_id
-            // 
-            this.coluna_id.HeaderText = "ID";
-            this.coluna_id.Name = "coluna_id";
-            this.coluna_id.ReadOnly = true;
-            this.coluna_id.Width = 48;
-            // 
-            // coluna_descricao
-            // 
-            this.coluna_descricao.HeaderText = "Descrição";
-            this.coluna_descricao.Name = "coluna_descricao";
-            this.coluna_descricao.ReadOnly = true;
-            this.coluna_descricao.Width = 105;
-            // 
-            // coluna_quantidade
-            // 
-            this.coluna_quantidade.HeaderText = "Quantidade";
-            this.coluna_quantidade.Name = "coluna_quantidade";
-            this.coluna_quantidade.ReadOnly = true;
-            this.coluna_quantidade.Width = 114;
-            // 
-            // coluna_valor_unitario
-            // 
-            this.coluna_valor_unitario.HeaderText = "Valor Unitário";
-            this.coluna_valor_unitario.Name = "coluna_valor_unitario";
-            this.coluna_valor_unitario.ReadOnly = true;
-            this.coluna_valor_unitario.Width = 127;
-            // 
             // grp_informacoes_venda
             // 
             this.grp_informacoes_venda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grp_informacoes_venda.BackColor = System.Drawing.Color.Transparent;
+            this.grp_informacoes_venda.Controls.Add(this.nup_quantidade);
             this.grp_informacoes_venda.Controls.Add(this.txt_descricao);
             this.grp_informacoes_venda.Controls.Add(this.lbl_id_venda);
             this.grp_informacoes_venda.Controls.Add(this.lbl_valor_unitario);
@@ -225,7 +193,6 @@
             this.grp_informacoes_venda.Controls.Add(this.lbl_quantidade);
             this.grp_informacoes_venda.Controls.Add(this.txt_valor_unitario);
             this.grp_informacoes_venda.Controls.Add(this.txt_id_venda);
-            this.grp_informacoes_venda.Controls.Add(this.txt_quantidade);
             this.grp_informacoes_venda.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_informacoes_venda.Location = new System.Drawing.Point(15, 12);
             this.grp_informacoes_venda.Name = "grp_informacoes_venda";
@@ -233,6 +200,25 @@
             this.grp_informacoes_venda.TabIndex = 11;
             this.grp_informacoes_venda.TabStop = false;
             this.grp_informacoes_venda.Text = "Informações da Venda:";
+            // 
+            // nup_quantidade
+            // 
+            this.nup_quantidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nup_quantidade.Location = new System.Drawing.Point(298, 43);
+            this.nup_quantidade.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nup_quantidade.Name = "nup_quantidade";
+            this.nup_quantidade.Size = new System.Drawing.Size(105, 26);
+            this.nup_quantidade.TabIndex = 19;
+            this.nup_quantidade.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nup_quantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nup_quantidade_KeyPress);
             // 
             // lbl_qnt_item_selecionado
             // 
@@ -245,24 +231,15 @@
             this.lbl_qnt_item_selecionado.TabIndex = 12;
             this.lbl_qnt_item_selecionado.Text = "Quantidade (Item Selecionado):";
             // 
-            // txt_qnt_item_selecionado
-            // 
-            this.txt_qnt_item_selecionado.Enabled = false;
-            this.txt_qnt_item_selecionado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_qnt_item_selecionado.Location = new System.Drawing.Point(367, 35);
-            this.txt_qnt_item_selecionado.Name = "txt_qnt_item_selecionado";
-            this.txt_qnt_item_selecionado.Size = new System.Drawing.Size(105, 26);
-            this.txt_qnt_item_selecionado.TabIndex = 13;
-            // 
             // grp_sistema
             // 
             this.grp_sistema.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.grp_sistema.BackColor = System.Drawing.Color.Transparent;
+            this.grp_sistema.Controls.Add(this.nup_qnt_item_selecionado);
             this.grp_sistema.Controls.Add(this.lbl_itens_sistema_resultado);
             this.grp_sistema.Controls.Add(this.lbl_total_resultado);
             this.grp_sistema.Controls.Add(this.lbl_itens_sistema);
             this.grp_sistema.Controls.Add(this.lbl_total);
-            this.grp_sistema.Controls.Add(this.txt_qnt_item_selecionado);
             this.grp_sistema.Controls.Add(this.lbl_qnt_item_selecionado);
             this.grp_sistema.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grp_sistema.Location = new System.Drawing.Point(15, 599);
@@ -272,14 +249,33 @@
             this.grp_sistema.TabStop = false;
             this.grp_sistema.Text = "Sistema:";
             // 
+            // nup_qnt_item_selecionado
+            // 
+            this.nup_qnt_item_selecionado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nup_qnt_item_selecionado.Location = new System.Drawing.Point(367, 36);
+            this.nup_qnt_item_selecionado.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nup_qnt_item_selecionado.Name = "nup_qnt_item_selecionado";
+            this.nup_qnt_item_selecionado.Size = new System.Drawing.Size(105, 26);
+            this.nup_qnt_item_selecionado.TabIndex = 19;
+            this.nup_qnt_item_selecionado.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nup_qnt_item_selecionado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nup_qnt_item_selecionado_KeyPress);
+            // 
             // lbl_itens_sistema_resultado
             // 
             this.lbl_itens_sistema_resultado.AutoSize = true;
             this.lbl_itens_sistema_resultado.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_itens_sistema_resultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_itens_sistema_resultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_itens_sistema_resultado.Location = new System.Drawing.Point(355, 118);
             this.lbl_itens_sistema_resultado.Name = "lbl_itens_sistema_resultado";
-            this.lbl_itens_sistema_resultado.Size = new System.Drawing.Size(17, 18);
+            this.lbl_itens_sistema_resultado.Size = new System.Drawing.Size(18, 19);
             this.lbl_itens_sistema_resultado.TabIndex = 19;
             this.lbl_itens_sistema_resultado.Text = "0";
             // 
@@ -287,10 +283,11 @@
             // 
             this.lbl_total_resultado.AutoSize = true;
             this.lbl_total_resultado.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_total_resultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total_resultado.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total_resultado.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lbl_total_resultado.Location = new System.Drawing.Point(306, 80);
             this.lbl_total_resultado.Name = "lbl_total_resultado";
-            this.lbl_total_resultado.Size = new System.Drawing.Size(39, 18);
+            this.lbl_total_resultado.Size = new System.Drawing.Size(48, 22);
             this.lbl_total_resultado.TabIndex = 18;
             this.lbl_total_resultado.Text = "0,00";
             // 
@@ -372,6 +369,35 @@
             this.btn_cancelar_venda.UseVisualStyleBackColor = false;
             this.btn_cancelar_venda.Click += new System.EventHandler(this.btn_cancelar_venda_Click);
             // 
+            // coluna_id
+            // 
+            this.coluna_id.HeaderText = "ID";
+            this.coluna_id.Name = "coluna_id";
+            this.coluna_id.ReadOnly = true;
+            this.coluna_id.Visible = false;
+            this.coluna_id.Width = 48;
+            // 
+            // coluna_descricao
+            // 
+            this.coluna_descricao.HeaderText = "Descrição";
+            this.coluna_descricao.Name = "coluna_descricao";
+            this.coluna_descricao.ReadOnly = true;
+            this.coluna_descricao.Width = 105;
+            // 
+            // coluna_quantidade
+            // 
+            this.coluna_quantidade.HeaderText = "Quantidade";
+            this.coluna_quantidade.Name = "coluna_quantidade";
+            this.coluna_quantidade.ReadOnly = true;
+            this.coluna_quantidade.Width = 114;
+            // 
+            // coluna_valor_unitario
+            // 
+            this.coluna_valor_unitario.HeaderText = "Valor Unitário";
+            this.coluna_valor_unitario.Name = "coluna_valor_unitario";
+            this.coluna_valor_unitario.ReadOnly = true;
+            this.coluna_valor_unitario.Width = 127;
+            // 
             // frm_mercadinho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -392,11 +418,14 @@
             this.Name = "frm_mercadinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema: Mercadinho";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgv_carrinho_de_compras)).EndInit();
             this.grp_informacoes_venda.ResumeLayout(false);
             this.grp_informacoes_venda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_quantidade)).EndInit();
             this.grp_sistema.ResumeLayout(false);
             this.grp_sistema.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_qnt_item_selecionado)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -408,7 +437,6 @@
         private System.Windows.Forms.Label lbl_descricao;
         private System.Windows.Forms.Label lbl_quantidade;
         private System.Windows.Forms.TextBox txt_id_venda;
-        private System.Windows.Forms.TextBox txt_quantidade;
         private System.Windows.Forms.TextBox txt_valor_unitario;
         private System.Windows.Forms.TextBox txt_descricao;
         private System.Windows.Forms.Button btn_inserir;
@@ -416,7 +444,6 @@
         private System.Windows.Forms.DataGridView dgv_carrinho_de_compras;
         private System.Windows.Forms.GroupBox grp_informacoes_venda;
         private System.Windows.Forms.Label lbl_qnt_item_selecionado;
-        private System.Windows.Forms.TextBox txt_qnt_item_selecionado;
         private System.Windows.Forms.GroupBox grp_sistema;
         private System.Windows.Forms.Label lbl_itens_sistema;
         private System.Windows.Forms.Label lbl_total;
@@ -426,6 +453,8 @@
         private System.Windows.Forms.Button btn_alterar;
         private System.Windows.Forms.Button btn_nova_venda;
         private System.Windows.Forms.Button btn_cancelar_venda;
+        private System.Windows.Forms.NumericUpDown nup_quantidade;
+        private System.Windows.Forms.NumericUpDown nup_qnt_item_selecionado;
         private System.Windows.Forms.DataGridViewTextBoxColumn coluna_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn coluna_descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn coluna_quantidade;
